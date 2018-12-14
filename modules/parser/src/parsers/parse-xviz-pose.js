@@ -12,6 +12,12 @@ export function parseXVIZPose(pose) {
       latitude,
       altitude
     });
+  } else {
+    Object.assign(result, {
+      longitude: -79.9475834,
+      latitude: 40.4090922,
+      altitude: 264
+    });
   }
 
   if (position) {
