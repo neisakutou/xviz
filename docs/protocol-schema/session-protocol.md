@@ -166,8 +166,13 @@ This is a collection of stream sets for all extractor output.
 
 | Name          | Type                             | Description                                       |
 | ------------- | -------------------------------- | ------------------------------------------------- |
-| `update_type` | `enum { snapshot, incremental }` | Whether we have a complete or incremental update. |
+| `update_type` | `string` | Whether we have a complete or incremental update. |
 | `updates`     | `list<stream_set>`               |                                                   |
+
+**update_type** - valid values:
+
+- `snapshot` - the provided streams contain a complete view of the world.  Any stream not included in is considered empty. 
+- `incremental` - the provide streams replace replace the contents of existing streams
 
 Here is a JSON example showing an incremental update that contains a single Stream Set, which itself
 has just the single `/object/polygon` containing a
