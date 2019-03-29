@@ -135,7 +135,15 @@ export class WorkerFarm {
         .process(job.data)
         .then(job.onResult)
         .catch(job.onError)
-        .then(() => this.next());
+        .then(() => {
+          this.debug({
+            message: 'waiting',
+            worker: worker.metadata.name,
+            backlog: queue.length
+          });
+
+          this.next();
+        });
     }
   }
 
